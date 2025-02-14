@@ -1,0 +1,5 @@
+Node 0.0 0.0
+Node 1.0 0.0
+Node 0.0 1.0
+Element 0 1 2
+Boundary 0 1
