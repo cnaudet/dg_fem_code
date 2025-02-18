@@ -20,7 +20,9 @@ public:
     
     // Get boundary information (N_boundaries x ...)
     int* get_boundaries() const { return d_boundaries; }
-
+    
+    // Get number of nodes information
+    size_t get_num_nodes() const { return num_nodes; }
 private:
     double* d_nodes;   // Device pointer for node coordinates
     int* d_elements;   // Device pointer for element connectivity

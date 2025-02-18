@@ -16,9 +16,14 @@ int main() {
     
     // Copy data from device to host
     cudaMemcpy(h_nodes.data(), d_nodes, num_nodes * 2 * sizeof(double), cudaMemcpyDeviceToHost);
+    cudaError_t err = cudaMemcpy(d_nodes, d_nodes, num_nodes * 2 * sizeof(double), cudaMemcpyHostToDevice);
+    if (err != cudaSuccess) {
+        std::cerr << "CUDA memcpy error: " << cudaGetErrorString(err) << std::endl;
+    }  
 
     // Print node coordinates
-    std::cout << "Nodes:\n";
+    std::cout << num_nodes << " Nodes:\n";
+    // std::cout << d_nodes;
     for (int i = 0; i < num_nodes; ++i) {
         std::cout << h_nodes[i * 2] << " " << h_nodes[i * 2 + 1] << "\n";
     }
