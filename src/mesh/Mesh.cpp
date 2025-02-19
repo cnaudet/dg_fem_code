@@ -65,11 +65,11 @@ void Mesh::read_custom_mesh(const std::string& filename) {
         std::cout << temp_nodes[i] << " " << temp_nodes[i + 1] << std::endl;
     }
 
-    cudaMalloc(&d_nodes, num_nodes * 2 * sizeof(double));
+    cudaMalloc(&d_nodes, num_nodes* 2 * sizeof(double));
     cudaMalloc(&d_elements, num_elements * 3 * sizeof(int));
     cudaMalloc(&d_boundaries, num_boundaries * 2 * sizeof(int));
 
-    cudaMemcpy(d_nodes, temp_nodes.data(), num_nodes * sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_elements, temp_elements.data(), num_elements * sizeof(int), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_boundaries, temp_boundaries.data(), num_boundaries * sizeof(int), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_nodes, temp_nodes.data(), num_nodes * 2 * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_elements, temp_elements.data(), num_elements * 3 * sizeof(int), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_boundaries, temp_boundaries.data(), num_boundaries * 2 * sizeof(int), cudaMemcpyHostToDevice);
 }
