@@ -21,9 +21,14 @@ public:
     // Get boundary information (N_boundaries x ...)
     int* get_boundaries() const { return d_boundaries; }
     
-    // Get number of nodes information
+    // Get information
     size_t get_num_nodes() const { return num_nodes; }
+    size_t get_num_elements() const { return num_elements; }
+    size_t get_num_boundaries() const { return num_boundaries; }
 private:
+    int D;  // Number of dimensions
+    size_t num_nodes, num_elements, num_boundaries;
+
     double* d_nodes;   // Device pointer for node coordinates
     int* d_elements;   // Device pointer for element connectivity
     int* d_boundaries; // Device pointer for boundary information
@@ -34,6 +39,11 @@ private:
 
     // Helper function to read a simple custom mesh format
     void read_custom_mesh(const std::string& filename);
+
+    // Helper functions
+    void generate_nodes(const std::vector<int>& num_points, const std::vector<double>& lower, const std::vector<double>& upper);
+    void generate_elements(const std::vector<int>& num_points);
+    void generate_boundaries(const std::vector<int>& num_points);
 };
 
 #endif // MESH_HPP
