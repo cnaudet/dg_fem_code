@@ -1,4 +1,4 @@
-#include "mesh.hpp"
+#include "mesh/Mesh.hpp"
 #include <vector>
 #include <iostream>
 
@@ -8,11 +8,11 @@ int main() {
     std::vector<double> lower = {0.0, 0.0, 0.0};
     std::vector<double> upper = {1.0, 1.0, 1.0};
 
-    Mesh mesh(D, num_points, lower, upper);
+    Mesh Mesh(D, num_points, lower, upper);
 
-    std::cout << "Generated Mesh: " << mesh.get_num_nodes() << " nodes, "
-              << mesh.get_num_elements() << " elements, "
-              << mesh.get_num_boundaries() << " boundary nodes.\n";
+    std::cout << "Generated Mesh: " << Mesh.get_num_nodes() << " nodes, "
+              << Mesh.get_num_elements() << " elements, "
+              << Mesh.get_num_boundaries() << " boundary nodes.\n";
 
     return 0;
 }

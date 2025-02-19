@@ -4,5 +4,5 @@
 #$ -N gpu_practice
 
 module load cuda
-./executables/test_mesh
+./executables/test_elem2elem
 
